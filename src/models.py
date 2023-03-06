@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -45,7 +45,7 @@ class Comment(Base):
 class Media(Base):
     __tablename__ ="media"
     id = Column(Integer, primary_key=True)
-    type=Column(String(60))
+    type_=Column(Enum(60))
     url= Column(String(60))
     post_id= Column(Integer, ForeignKey("post.id"))
     post = relationship("post")    
